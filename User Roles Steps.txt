@@ -1,0 +1,34 @@
+To use Roles
+1. Install the package 
+composer require spatie/laravel-permission
+
+2. php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+عشان ينقل ملفات الميغراشن بمشروعنا عشان ننشئ الجداول
+
+
+3. php artisan migrate
+
+
+4. For User model you miust
+use Spatie\Permission\Traits\HasRoles;
+and 
+use HasRoles; // inside the Class
+
+5. To create new role
+use Spatie\Permission\Models\Role;
+Role::create(['name'=>'admin']);
+
+6. To Assign user to specific Role
+$user->assignRole('admin')
+To check validity
+$user->hasRole('admin')
+
+
+
+6. Go to Kernal and add
+'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+
+
+7. To use this role in your route 
+->middleware(["auth","role:admin",'permissions'])

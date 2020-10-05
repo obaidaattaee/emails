@@ -1,0 +1,47 @@
+body,h1,h2,h3,h4,h5,h6,.dropdown-menu,.page-title,.select2-container--bootstrap .select2-selection{
+    font-family: 'Cairo', sans-serif !important;
+}
+.page-logo span{
+    display:inline-block;
+    color:#fff;
+    padding-top:20px;
+    font-size:20px;
+    cursor:default;
+}
+select.form-control{
+    padding:2px 12px !important;
+}
+textarea{
+    resize:none !important;
+}
+.input-validation-error{
+    border-color:#f62f2f !important;
+}
+.modal-body{
+    padding:30px !important;
+}
+.relative{
+    position:relative;
+}
+.relative .btnDeleteSelected{
+    position:absolute;right:0px;
+    top:0px;
+    z-index:10;
+}
+.imgCrop{
+    height:130px;
+    overflow:hidden;
+}
+.imgCrop img{
+    width:100%;
+}
+.imgCaption .input-group{
+    margin-bottom:5px;
+    margin-top:5px;
+}
+input[type=file]{
+    display:inline !important;
+}
+.page-header.navbar .page-logo .logo-default{
+    margin-top:20px !important;
+}

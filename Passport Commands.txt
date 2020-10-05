@@ -1,0 +1,61 @@
+1. composer require laravel/passport
+2. php artisan migrate
+3. php artisan passport:install
+
+4. in User Model
+
+use Laravel\Passport\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+}
+
+
+5. in  AuthServiceProvider
+use Laravel\Passport\Passport;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+     * The policy mappings for the application.
+     *
+     * @var array
+     */
+    protected $policies = [
+        'App\Model' => 'App\Policies\ModelPolicy',
+    ];
+
+    /**
+     * Register any authentication / authorization services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerPolicies();
+
+        Passport::routes();
+    }
+}
+
+
+6. in config/auth.php
+'guards' => [
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
+    ],
+
+    'api' => [
+        'driver' => 'passport',
+        'provider' => 'users',
+    ],
+],
+
+
+
+php artisan cache:clear
+php artisan route:cache
+php artisan config:cache
+composer dump-autoload -o
